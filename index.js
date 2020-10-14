@@ -1,10 +1,15 @@
 const express = require("express");
 const app = express();
-
 const port = 3000;
 
-
 app.set('view engine', 'pug');
+
+	var users = [
+  	{id :1 , name: 'Nam'},
+  	{id :12 , name: 'Hai'},
+  	{id :13 , name: 'Ha'},
+  	{id :14 , name: 'Nhung'}
+  	];
 
 app.get('/',function(req,res){
   res.render('index', {
@@ -12,15 +17,21 @@ app.get('/',function(req,res){
   });
 })
 
-app.get('/user',function(req,res){
+app.get('/users',function(req,res){
  res.render('users/index', {
-  	users: [
-  	{id :1 , name: 'ASdAsd'},
-  	{id :12 , name: 'rwerwrewd'},
-  	{id :13 , name: 'cvcxvxsd'},
-  	{id :14 , name: 'ASdsdsddweAsd'}
-  	]
+  users: users
   });
+})
+
+app.get('/users/search',function(req,res){
+  var q= req.query.q;
+  var match= users.filter(function(user){
+  	return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+  });
+
+  res.render('users/index',{
+  	users: match
+  })
 })
 
 app.listen(port, function() {
