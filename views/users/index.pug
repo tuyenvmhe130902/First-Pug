@@ -1,14 +1,19 @@
-h1 User
-a(href="/users/create") Create Users
+html
+	head
+		link (rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+	body
 
-form(action='/users/search' method='GET')
-      input(type='text' name='q')
-      button Search      
-ul
-  each user in users
-      li
-            span= user.name
-            span &nbsp;&nbsp;&nbsp;
-            a(href="/users/" + user.id) View            
-      
-      
+		h1 User
+		a(href="/users/create") Create Users
+
+		form(action='/users/search' method='GET')
+		      input(type='text' name='q' class="form-control")
+		      button(class="btn btn-primary ml-2") Search      
+		ul
+		  each user in users
+		      li
+		            span= user.name
+		            span &nbsp;&nbsp;&nbsp;
+		            a(href="/users/" + user.id) View            
+		      
+		      
