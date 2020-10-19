@@ -5,9 +5,10 @@ const bodyParser = require('body-parser');
 const UseRouter =  require('./routers/user.router');
 
 app.set('view engine', 'pug');
+app.set('views', 'views');
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/',function(req,res){
   res.render('index', {
