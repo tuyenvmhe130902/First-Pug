@@ -32,5 +32,4 @@ postCreate :function(req,res){
   db.get('users').push(req.body).write();
   res.redirect('/users');
 }
-
 }
